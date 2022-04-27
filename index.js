@@ -25,7 +25,7 @@ newGuessWord();
 const display = function () {
   wordDisplay.innerHTML = ``;
   for (let i = 0; i < guessLetters.length; i++) {
-    wordDisplay.innerHTML += `<div class='box'>${guessLetters[i]}</div>`;
+    wordDisplay.innerHTML += `<div class='box flex-center'>${guessLetters[i]}</div>`;
   }
   if (!guessLetters.includes(""))
     document.querySelector(".win").classList.remove("hidden");
@@ -34,14 +34,17 @@ display();
 
 // log users letter guess;
 for (let i = 0; i < letterBtn.length; i++)
-  letterBtn[i].addEventListener("click", function () {
-    renderLetter(letterBtn[i].textContent);
-  });
-
+  if (!letterBtn[i].classList.contains("pressed")) {
+    letterBtn[i].addEventListener("click", function () {
+      console.log("logging");
+      renderLetter(letterBtn[i].textContent);
+      letterBtn[i].classList.add("pressed");
+    });
+  }
 function renderLetter(letter) {
+  console.log("render");
   if (secretLetters.includes(letter) && lives > 0) {
     console.log(lives);
-    document.getElementById(letter).classList.add("hidden");
     for (let i = 0; i < secretLetters.length; i++) {
       if (secretLetters[i] == letter) {
         let letterPosition = Number([i]);
@@ -73,6 +76,6 @@ for (let i = 0; i < againBtn.length; i++) {
     newGuessWord();
     display();
     for (let i = 0; i < letterBtn.length; i++)
-      letterBtn[i].classList.remove("hidden");
+      letterBtn[i].classList.remove("hidden", "pressed");
   });
 }
