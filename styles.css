@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.game {
+  height: 100vh;
+  background: linear-gradient(
+    rgba(212, 210, 211, 0.952),
+    rgba(250, 236, 243, 0.932)
+  );
+}
+.game-box {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.grid > *:first-child {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+.grid > *:nth-child(2n) {
+  grid-column: 1 / span3;
+  grid-row: 3 / span3;
+}
+.grid > *:nth-child(3n) {
+  grid-column: 3 / span 3;
+  grid-row: 1 / span 2;
+}
+.grid .word {
+  display: flex;
+}
+.letterBtn {
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  color: black;
+  border-radius: 0.5em;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.letterBtn:hover {
+  transform: scale(1.02);
+}
+
+.box {
+  border: black 2px solid;
+  border-radius: 5px;
+  margin: 20px;
+  height: 4rem;
+  width: 4rem;
+  text-align: center;
+  font-size: 3rem;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none;
+}
+
+.win {
+  background-color: antiquewhite;
+  height: 100vh;
+  width: 100vw;
+}
+.lose {
+  background-color: rgb(68, 20, 20);
+  height: 100vh;
+  width: 100vw;
+}
